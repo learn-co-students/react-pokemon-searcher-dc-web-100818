@@ -3,10 +3,14 @@ import PokemonCard from './PokemonCard'
 import { Card } from 'semantic-ui-react'
 
 class PokemonCollection extends React.Component {
+
   render() {
+    const pokemons = this.props.pokemon
     return (
       <Card.Group itemsPerRow={6}>
         <h1>Hello From Pokemon Collection</h1>
+          {pokemons.filter(poke => poke.name.includes(this.props.userInput))
+            .map(p => <PokemonCard key={p.id} pokemon={p}/>)}
       </Card.Group>
     )
   }
