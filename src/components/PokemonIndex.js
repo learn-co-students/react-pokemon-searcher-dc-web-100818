@@ -13,7 +13,7 @@ class PokemonIndex extends React.Component {
   }
   
   sortByHandler = (event, data) => this.setState({sortTerm: data.value})
-
+  
   componentDidMount() {
     this.fetchAllPokemon()
   }

@@ -21,6 +21,7 @@ class PokemonForm extends React.Component {
       frontUrl: event.target.frontUrl.value,
       backUrl: event.target.backUrl.value
     }, () => this.props.addPokemon(this.state))
+    event.target.reset()
   }
 
   render() {
