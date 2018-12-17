@@ -9,7 +9,9 @@ const Sort = (props) => {
    ]
 
    return (
-      <Select onChange={props.sortByHandler} placeholder='Sort by' options={options}/>
+      <div className='sort-box'>
+         <Select onChange={props.sortByHandler} placeholder='Sort by' options={options}/>
+      </div>
    )
 }
 
