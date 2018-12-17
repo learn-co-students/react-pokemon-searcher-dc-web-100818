@@ -11,7 +11,7 @@ class PokemonIndex extends React.Component {
     searchTerm: '',
     sortTerm: ''
   }
-
+  
   sortByHandler = (event, data) => this.setState({sortTerm: data.value})
 
   componentDidMount() {
@@ -24,7 +24,9 @@ class PokemonIndex extends React.Component {
       .then(data => this.setState({pokemon: data}))
   }
 
-  searchHandler = (event) => this.setState({searchTerm: event.target.value})
+  searchHandler = (event, data) => {
+    this.setState({searchTerm: data.value})
+  }
 
   filterPokemon = () => {
     let filteredPokemon = this.state.pokemon.filter(pokemon => pokemon.name.includes(this.state.searchTerm))
@@ -64,7 +66,7 @@ class PokemonIndex extends React.Component {
       <div>
         <h1>Pokemon Searcher</h1>
         <br />
-        <Search onSearchChange={this.searchHandler} showNoResults={false} />
+        <Search onSearchChange={_.debounce(this.searchHandler, 500)} showNoResults={false} />
         <br />
         <Sort sortByHandler={this.sortByHandler}/>
         <br />
